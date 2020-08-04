@@ -8,6 +8,9 @@ Our drone makes use of PX4 as it's autopilot system working on Pixhawk Flight Co
 * Common GPS Modules: https://github.com/PX4/GpsDrivers
 * PyuLog to scrape the flight data: https://github.com/PX4/pyulog
 * Flight Plotter: https://github.com/PX4/FlightPlot
+* Obstacle Avoidance: https://github.com/PX4/avoidance
+* ROS: https://github.com/PX4/px4_ros_com, https://github.com/PX4/px4ros
+
 
 
 
