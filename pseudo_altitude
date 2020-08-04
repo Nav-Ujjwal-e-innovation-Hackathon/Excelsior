@@ -1,0 +1,29 @@
+import RPi.GPIO as GP
+import time
+
+GP.setmode(GP.BOARD)
+TRIG= xx                                 //Port no
+ECHO= xx                               //Port no
+
+GP.setup(TRIG,GP.OUT)
+GP.setup(TRIG,GP.IN)
+
+GP.output(TRIG,false)
+time.sleep(2)
+
+try:
+    while True:
+        GP.output(TRIG,True)
+        time.sleep(0.000001)
+        GP.output(TRIG,False)
+        
+        while GP.input(ECHO)==0
+            pulse_start=time.time()
+        
+        while GP.output(ECHO)==1
+            pulse_end=time.time()
+        
+        pulse_duration=pulse_end-pulse_start
+        distance=(pulse_duration)*17150
+except KeyboardInterrupt:
+    GP.cleanup()

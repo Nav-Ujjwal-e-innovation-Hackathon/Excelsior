@@ -1,0 +1,26 @@
+1.Takeoff to target altitude:
+while True do
+    channel[x].override = channel[x] + x   //x is the throttle channel
+    if Altitude >= target*0.95 
+        return
+    time.sleep(x)
+
+2. Altitude stability
+while True do
+    if Altitude >= (target)*1.1 then 
+        channel[x].override = channel[x] - x
+    if Altitude <= (target)*0.9 then
+        channel[x].override = channel[x] + x
+    time.sleep(x)
+
+3. Landing 
+while Altitude >= x cm do   //x is the lading platform altitude
+    channel[x].override = channel[x] - y
+    time.sleep(x)
+
+4. Moving the Pitch, Roll and Yaw
+channel[Channel].override = channel[Channel] + (Direction * x)
+for i to Duration(Time) do 
+    time.sleep(x)
+end for
+channel[Channel].override = channel[Channel] - (Direction * x)
