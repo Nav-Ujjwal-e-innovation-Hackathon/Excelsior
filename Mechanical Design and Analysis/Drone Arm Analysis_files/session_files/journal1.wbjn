@@ -1,0 +1,51 @@
+# encoding: utf-8
+# Release 19.2
+SetScriptVersion(Version="19.2.120")
+template1 = GetTemplate(TemplateName="EngData")
+system1 = template1.CreateSystem()
+favorites1 = EngData.LoadFavoriteItems()
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.ImportMaterial(
+    Name="Carbon Fiber (395 GPa)",
+    Source="Composite_Materials.xml")
+template2 = GetTemplate(
+    TemplateName="Static Structural",
+    Solver="ANSYS")
+engineeringDataComponent1 = system1.GetComponent(Name="Engineering Data")
+system2 = template2.CreateSystem(
+    ComponentsToShare=[engineeringDataComponent1],
+    Position="Right",
+    RelativeTo=system1)
+geometry1 = system2.GetContainer(ComponentName="Geometry")
+geometry1.SetFile(FilePath="D:/CAD DRAWINGS/Drone/s500-frame-1.snapshot.6/Arm - White no scale.STEP")
+modelComponent1 = system2.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system2.GetContainer(ComponentName="Model")
+model1.Edit()
+model1.Exit()
+EngData.EnableFilter(Enable=False)
+library1 = EngData.OpenLibrary(
+    Name="Additive Manufacturing Materials",
+    Source="Additive_Manufacturing_Materials.xml")
+library2 = EngData.OpenLibrary(
+    Name="Geomechanical Materials",
+    Source="GeoMechanical_Materials.xml")
+library3 = EngData.OpenLibrary(
+    Name="Composite Materials",
+    Source="Composite_Materials.xml")
+matl2 = engineeringData1.ImportMaterial(
+    Name="Carbon Fiber (230 GPa)",
+    Source="Composite_Materials.xml")
+matl3 = engineeringData1.ImportMaterial(
+    Name="Carbon Fiber (290 GPa)",
+    Source="Composite_Materials.xml")
+modelComponent1.Refresh()
+model1.Edit()
+model1.Exit()
+matl4 = engineeringData1.ImportMaterial(
+    Name="Resin Epoxy",
+    Source="Composite_Materials.xml")
+modelComponent1.Refresh()
+model1.Edit()
+model1.Exit()
+Save(Overwrite=True)
